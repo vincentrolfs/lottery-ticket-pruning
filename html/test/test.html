@@ -1,0 +1,778 @@
+These automated tests depend on the compiled model <code>../../data/models_js/lt_traditional_11696672_16.000_round01_final.js</code>.
+
+Check the console to see if there was an error.
+
+<script src="test-inputs.js"></script>
+<script src="../lib/lib.js"></script>
+<script src="../../data/models_js/lt_traditional_11696672_16.000_round01_final.js"></script>
+<script src="stride_tester.js"></script>
+<script>
+    function assert(condition, message) {
+        if (!condition) {
+            throw "Assertion fail" + (message ? `: ${message}` : "");
+        }
+    }
+
+    function assertEqual(a, b, message) {
+        const diff = Math.abs(a - b);
+
+        assert(diff < 10 ** (-5), `${a} and ${b} are not equal` + (message ? `: ${message}` : ""))
+    }
+</script>
+<script>
+    var expected = [0.131210595369339, 0.8666724562644958, 0.4500334858894348, -0.12658782303333282, -0.1911192536354065, -0.12672215700149536, -0.14864857494831085, -0.11442824453115463, -0.09670539945363998, -0.09904684126377106, 0.060030095279216766, 0.2411927580833435, 0.540684700012207, 0.545985996723175, 0.5959921479225159, 0.3816995620727539, 0.31349799036979675, 0.13172560930252075, -0.4171103239059448, -0.43965041637420654, -0.055372994393110275, 0.12563098967075348, 0.07893042266368866, -0.037595465779304504, 0.147720068693161, 0.30448397994041443, 0.4585040211677551, 0.04968869313597679, -0.3316672444343567, -0.19726118445396423, 0.008914689533412457, 0.078985795378685]
+    var actual = typedArrayToArray(
+        conv1(arrayToTypedArray(input0)),
+        16, 32, 32
+    )[3][5]
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (var i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // --------------------------------
+
+    var expected = [-0.006596194114536047, -0.007285502273589373, -0.008144105784595013, -0.008264495991170406, -0.007194741163402796, -0.0066470797173678875, -0.006597690749913454, -0.006568246055394411, -0.006502662785351276, -0.006553491111844778, -0.006848867051303387, -0.007079543080180883, -0.006743348203599453, -0.006529328878968954, -0.006876289378851652, -0.007479862309992313, -0.00777277909219265, -0.007733543869107962, -0.007638196926563978, -0.006914613302797079, -0.006002229172736406, -0.006074061617255211, -0.006774419452995062, -0.007174415048211813, -0.007359833922237158, -0.007631566375494003, -0.008213904686272144, -0.008581574074923992, -0.008711226284503937, -0.008109310641884804, -0.007343984674662352, -0.007181304041296244]
+    var actual = typedArrayToArray(
+        bn1(arrayToTypedArray(input1)),
+        16, 32, 32
+    )[10][7]
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (var i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // --------------------------------
+
+    var expected = [2.327375888824463, 2.9895248413085938, 3.056553840637207, 3.16871976852417, 3.0813894271850586, 2.982741355895996, 2.824824571609497, 2.8971495628356934, 2.9135098457336426, 2.8646247386932373, 2.702660083770752, 1.6019847393035889, 2.412189483642578, 2.935455799102783, 3.0608396530151367, 3.1985037326812744, 3.531184434890747, 3.8126869201660156, 3.162679672241211, 2.494992733001709, 2.2337939739227295, 1.9989625215530396, 2.0149855613708496, 2.21789813041687, 2.661034107208252, 2.4399757385253906, 2.749907970428467, 2.812143564224243, 2.7923052310943604, 2.803781032562256, 2.9263389110565186, 3.1160635948181152]
+    var actual = typedArrayToArray(
+        relu(arrayToTypedArray(input2)),
+        16, 32, 32
+    )[11][4]
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (var i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // --------------------------------
+
+    var expected = [0.3198692798614502, 0.88069087266922, 0.7229875326156616, 0.919542133808136, 0.037038300186395645, 1.1076174974441528, 0.24522161483764648, 0.705380916595459, 0.47022590041160583, 0.014253060333430767, 0.058423761278390884, -0.5317164063453674, -0.6631953120231628, -0.41851985454559326, -0.5432043671607971, -0.1281200647354126]
+    var actual = typedArrayToArray(
+        stride_tester(arrayToTypedArray(input1)),
+        32, 16, 16
+    )[10][10]
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (var i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // --------------------------------
+
+    var youngInput = arrayToTypedArray([
+        [
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+        ],
+        [
+            [2, 2, 2, 2],
+            [2, 2, 2, 2],
+            [2, 2, 2, 2],
+            [2, 2, 2, 2],
+        ],
+    ]);
+    var oldInput = arrayToTypedArray([
+        [
+            [3, 3, 3, 3],
+            [3, 3, 3, 3],
+            [3, 3, 3, 3],
+            [3, 3, 3, 3],
+        ],
+        [
+            [4, 4, 4, 4],
+            [4, 4, 4, 4],
+            [4, 4, 4, 4],
+            [4, 4, 4, 4],
+        ],
+    ]);
+    var expected = [
+        [
+            [4, 4, 4, 4],
+            [4, 4, 4, 4],
+            [4, 4, 4, 4],
+            [4, 4, 4, 4],
+        ],
+        [
+            [6, 6, 6, 6],
+            [6, 6, 6, 6],
+            [6, 6, 6, 6],
+            [6, 6, 6, 6],
+        ],
+    ];
+    var actual = typedArrayToArray(
+        shortcut(youngInput, [2, 4, 4], oldInput, [2, 4, 4]),
+        2, 4, 4
+    )
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (var i = 0; i < actual.length; i++) {
+        assertEqual(expected[i].length, actual[i].length, "Length differs")
+        for (var x = 0; x < actual[i].length; x++) {
+            assertEqual(expected[i][x].length, actual[i][x].length, "Length differs")
+
+            for (var y = 0; y < actual[i][x].length; y++) {
+                assertEqual(expected[i][x][y], actual[i][x][y])
+            }
+        }
+    }
+
+    // --------------------------------
+
+    var youngInput = arrayToTypedArray([
+        [
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+        ],
+        [
+            [2, 2, 2, 2],
+            [2, 2, 2, 2],
+            [2, 2, 2, 2],
+            [2, 2, 2, 2],
+        ],
+        [
+            [5, 5, 5, 5],
+            [5, 5, 5, 5],
+            [5, 5, 5, 5],
+            [5, 5, 5, 5],
+        ],
+        [
+            [11, 11, 11, 11],
+            [11, 11, 11, 11],
+            [11, 11, 11, 11],
+            [11, 11, 11, 11],
+        ],
+    ]);
+    var oldInput = arrayToTypedArray([
+        [
+            [3, 3, 3, 3, 3, 3, 3, 3],
+            [3, 3, 3, 3, 3, 3, 3, 3],
+            [3, 3, 3, 3, 3, 3, 3, 3],
+            [3, 3, 3, 3, 3, 3, 3, 3],
+            [3, 3, 3, 3, 5, 5, 5, 5],
+            [3, 3, 3, 3, 5, 5, 5, 5],
+            [3, 3, 3, 3, 5, 5, 9, 9],
+            [3, 3, 3, 3, 5, 5, 9, 9],
+        ],
+        [
+            [-1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1, -1, -1],
+        ],
+    ]);
+    var expected = [
+        [
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+        ],
+        [
+            [5, 5, 5, 5],
+            [5, 5, 5, 5],
+            [5, 5, 7, 7],
+            [5, 5, 7, 11],
+        ],
+        [
+            [4, 4, 4, 4],
+            [4, 4, 4, 4],
+            [4, 4, 4, 4],
+            [4, 4, 4, 4],
+        ],
+        [
+            [11, 11, 11, 11],
+            [11, 11, 11, 11],
+            [11, 11, 11, 11],
+            [11, 11, 11, 11],
+        ],
+    ];
+    var actual = typedArrayToArray(
+        shortcut(youngInput, [4, 4, 4], oldInput, [2, 8, 8]),
+        4, 4, 4
+    )
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (var i = 0; i < actual.length; i++) {
+        assertEqual(expected[i].length, actual[i].length, "Length differs")
+        for (var x = 0; x < actual[i].length; x++) {
+            assertEqual(expected[i][x].length, actual[i][x].length, "Length differs")
+
+            for (var y = 0; y < actual[i][x].length; y++) {
+                assertEqual(expected[i][x][y], actual[i][x][y])
+            }
+        }
+    }
+
+    // --------------------------------
+
+    var expected = [0.3420409560203552, 0.14764246344566345, 0.24987302720546722, 0.0612541064620018, 0.0, 0.0, 0.0, 0.0, 0.475456565618515, 0.0, 0.0, 0.0, 0.10088026523590088, 0.0, 0.12535764276981354, 0.19336813688278198, 0.25915321707725525, 0.3377349376678467, 0.0, 0.3425397574901581, 0.0, 0.05469521880149841, 0.1937195509672165, 0.23774661123752594, 0.19692134857177734, 0.13829278945922852, 0.07603664696216583, 0.23215819895267487, 0.21886223554611206, 0.0984504446387291, 0.043015435338020325, 0.24137020111083984]
+    var actual = arrayToTypedArray(input0);
+    actual = conv1(actual);
+    actual = bn1(actual);
+    var old = actual = relu(actual);
+
+    actual = layer1_0_conv1(actual);
+    actual = layer1_0_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_0_conv2(actual);
+    actual = layer1_0_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    actual = relu(actual);
+
+    actual = typedArrayToArray(
+        actual,
+        16, 32, 32
+    )[10][10]
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (let i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // --------------------------------
+
+    var expected = [0.32095620036125183, 0.6061704754829407, 0.3968408405780792, 0.0, 0.0, 0.09048350155353546, 0.0, 0.0, 1.1894323825836182, 0.0, 0.0, 0.0, 0.053031887859106064, 0.00018889683997258544, 0.5079140663146973, 0.7836058139801025, 0.05738331377506256, 0.42521411180496216, 1.2159925699234009, 0.22242259979248047, 0.0, 0.1468125581741333, 0.3723442554473877, 0.6721521019935608, 0.4724394381046295, 0.6200075149536133, 0.009769245982170105, 0.21310853958129883, 0.056248217821121216, 0.2247512936592102, 0.0, 0.0]
+    var actual = arrayToTypedArray(input0);
+    actual = conv1(actual);
+    actual = bn1(actual);
+    var old = actual = relu(actual);
+
+    actual = layer1_0_conv1(actual);
+    actual = layer1_0_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_0_conv2(actual);
+    actual = layer1_0_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+
+    actual = layer1_1_conv1(actual);
+    actual = layer1_1_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_1_conv2(actual);
+    actual = layer1_1_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+
+    actual = layer1_2_conv1(actual);
+    actual = layer1_2_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_2_conv2(actual);
+    actual = layer1_2_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+
+    actual = typedArrayToArray(
+        actual,
+        16, 32, 32
+    )[10][10]
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (let i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // --------------------------------
+
+    var expected = [2.2550275325775146, 2.693763017654419, 1.8216633796691895, 1.8920907974243164, 2.1694400310516357, 1.4386231899261475, 1.5088205337524414, 2.2719202041625977, 2.6350626945495605, 3.340721845626831, 3.884150981903076, 2.91166353225708, 1.9048547744750977, 2.1646294593811035, 1.7209962606430054, 1.796489953994751, 1.7731260061264038, 1.517441749572754, 1.2629470825195312, 1.434827208518982, 1.9370429515838623, 1.8388049602508545, 1.878066062927246, 2.0715956687927246, 2.0240237712860107, 2.104447364807129, 2.1201021671295166, 2.2855732440948486, 1.7799111604690552, 1.8994114398956299, 1.7851638793945312, 1.892093539237976]
+    var actual = arrayToTypedArray(input0);
+    actual = conv1(actual);
+    actual = bn1(actual);
+    var old = actual = relu(actual);
+
+    actual = layer1_0_conv1(actual);
+    actual = layer1_0_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_0_conv2(actual);
+    actual = layer1_0_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_1_conv1(actual);
+    actual = layer1_1_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_1_conv2(actual);
+    actual = layer1_1_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_2_conv1(actual);
+    actual = layer1_2_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_2_conv2(actual);
+    actual = layer1_2_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_3_conv1(actual);
+    actual = layer1_3_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_3_conv2(actual);
+    actual = layer1_3_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_4_conv1(actual);
+    actual = layer1_4_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_4_conv2(actual);
+    actual = layer1_4_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_5_conv1(actual);
+    actual = layer1_5_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_5_conv2(actual);
+    actual = layer1_5_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_6_conv1(actual);
+    actual = layer1_6_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_6_conv2(actual);
+    actual = layer1_6_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_7_conv1(actual);
+    actual = layer1_7_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_7_conv2(actual);
+    actual = layer1_7_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_8_conv1(actual);
+    actual = layer1_8_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_8_conv2(actual);
+    actual = layer1_8_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+
+    actual = typedArrayToArray(
+        actual,
+        16, 32, 32
+    )[6][9]
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (let i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // // --------------------------------
+
+    var expected = [1.555012583732605, 1.5958226919174194, 0.10443165898323059, 0.1666737049818039, 2.7168221473693848, 1.001078486442566, -0.2044937163591385, 0.04459318891167641, 0.339382141828537, 0.6745794415473938, 0.6587415933609009, 0.47445473074913025, -0.4222281277179718, 0.12600238621234894, -0.020016705617308617, 0.5215227007865906]
+    var actual = arrayToTypedArray(input0);
+    actual = conv1(actual);
+    actual = bn1(actual);
+    var old = actual = relu(actual);
+
+    actual = layer1_0_conv1(actual);
+    actual = layer1_0_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_0_conv2(actual);
+    actual = layer1_0_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_1_conv1(actual);
+    actual = layer1_1_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_1_conv2(actual);
+    actual = layer1_1_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_2_conv1(actual);
+    actual = layer1_2_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_2_conv2(actual);
+    actual = layer1_2_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_3_conv1(actual);
+    actual = layer1_3_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_3_conv2(actual);
+    actual = layer1_3_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_4_conv1(actual);
+    actual = layer1_4_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_4_conv2(actual);
+    actual = layer1_4_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_5_conv1(actual);
+    actual = layer1_5_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_5_conv2(actual);
+    actual = layer1_5_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_6_conv1(actual);
+    actual = layer1_6_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_6_conv2(actual);
+    actual = layer1_6_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_7_conv1(actual);
+    actual = layer1_7_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_7_conv2(actual);
+    actual = layer1_7_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_8_conv1(actual);
+    actual = layer1_8_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_8_conv2(actual);
+    actual = layer1_8_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+
+    actual = layer2_0_conv1(actual);
+
+    actual = typedArrayToArray(
+        actual,
+        32, 16, 16
+    )[10][10]
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (let i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // --------------------------------
+
+    var expected = [1.591794729232788, 1.0064102411270142, 2.006087064743042, 2.1206233501434326, 1.3378666639328003, 2.8753530979156494, 3.2797000408172607, 2.7829973697662354, 1.6948615312576294, 2.3755407333374023, 2.1946651935577393, 2.123903274536133, 1.995259404182434, 1.8571288585662842, 0.8961373567581177, 0.6253657341003418]
+    var actual = arrayToTypedArray(input0);
+    actual = conv1(actual);
+    actual = bn1(actual);
+    var old = actual = relu(actual);
+
+    actual = layer1_0_conv1(actual);
+    actual = layer1_0_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_0_conv2(actual);
+    actual = layer1_0_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_1_conv1(actual);
+    actual = layer1_1_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_1_conv2(actual);
+    actual = layer1_1_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_2_conv1(actual);
+    actual = layer1_2_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_2_conv2(actual);
+    actual = layer1_2_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_3_conv1(actual);
+    actual = layer1_3_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_3_conv2(actual);
+    actual = layer1_3_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_4_conv1(actual);
+    actual = layer1_4_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_4_conv2(actual);
+    actual = layer1_4_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_5_conv1(actual);
+    actual = layer1_5_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_5_conv2(actual);
+    actual = layer1_5_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_6_conv1(actual);
+    actual = layer1_6_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_6_conv2(actual);
+    actual = layer1_6_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_7_conv1(actual);
+    actual = layer1_7_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_7_conv2(actual);
+    actual = layer1_7_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_8_conv1(actual);
+    actual = layer1_8_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_8_conv2(actual);
+    actual = layer1_8_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+
+    actual = layer2_0_conv1(actual);
+    actual = layer2_0_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_0_conv2(actual);
+    actual = layer2_0_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [16, 32, 32]);
+    old = actual = relu(actual);
+
+    actual = typedArrayToArray(
+        actual,
+        32, 16, 16
+    )[10][10]
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (let i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // --------------------------------
+
+    var expected = [-3.1794843673706055, -1.244219422340393, -0.876381516456604, 14.030437469482422, -4.694888591766357, 8.837230682373047, 1.182134985923767, -6.847528457641602, -5.141674518585205, -3.01186466217041]
+    var actual = arrayToTypedArray(input0);
+    actual = conv1(actual);
+    actual = bn1(actual);
+    var old = actual = relu(actual);
+
+    actual = layer1_0_conv1(actual);
+    actual = layer1_0_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_0_conv2(actual);
+    actual = layer1_0_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_1_conv1(actual);
+    actual = layer1_1_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_1_conv2(actual);
+    actual = layer1_1_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_2_conv1(actual);
+    actual = layer1_2_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_2_conv2(actual);
+    actual = layer1_2_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_3_conv1(actual);
+    actual = layer1_3_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_3_conv2(actual);
+    actual = layer1_3_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_4_conv1(actual);
+    actual = layer1_4_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_4_conv2(actual);
+    actual = layer1_4_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_5_conv1(actual);
+    actual = layer1_5_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_5_conv2(actual);
+    actual = layer1_5_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_6_conv1(actual);
+    actual = layer1_6_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_6_conv2(actual);
+    actual = layer1_6_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_7_conv1(actual);
+    actual = layer1_7_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_7_conv2(actual);
+    actual = layer1_7_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer1_8_conv1(actual);
+    actual = layer1_8_bn1(actual);
+    actual = relu(actual);
+    actual = layer1_8_conv2(actual);
+    actual = layer1_8_bn2(actual);
+    actual = shortcut(actual, [16, 32, 32], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer2_0_conv1(actual);
+    actual = layer2_0_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_0_conv2(actual);
+    actual = layer2_0_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [16, 32, 32]);
+    old = actual = relu(actual);
+    actual = layer2_1_conv1(actual);
+    actual = layer2_1_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_1_conv2(actual);
+    actual = layer2_1_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [32, 16, 16]);
+    old = actual = relu(actual);
+    actual = layer2_2_conv1(actual);
+    actual = layer2_2_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_2_conv2(actual);
+    actual = layer2_2_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [32, 16, 16]);
+    old = actual = relu(actual);
+    actual = layer2_3_conv1(actual);
+    actual = layer2_3_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_3_conv2(actual);
+    actual = layer2_3_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [32, 16, 16]);
+    old = actual = relu(actual);
+    actual = layer2_4_conv1(actual);
+    actual = layer2_4_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_4_conv2(actual);
+    actual = layer2_4_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [32, 16, 16]);
+    old = actual = relu(actual);
+    actual = layer2_5_conv1(actual);
+    actual = layer2_5_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_5_conv2(actual);
+    actual = layer2_5_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [32, 16, 16]);
+    old = actual = relu(actual);
+    actual = layer2_6_conv1(actual);
+    actual = layer2_6_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_6_conv2(actual);
+    actual = layer2_6_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [32, 16, 16]);
+    old = actual = relu(actual);
+    actual = layer2_7_conv1(actual);
+    actual = layer2_7_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_7_conv2(actual);
+    actual = layer2_7_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [32, 16, 16]);
+    old = actual = relu(actual);
+    actual = layer2_8_conv1(actual);
+    actual = layer2_8_bn1(actual);
+    actual = relu(actual);
+    actual = layer2_8_conv2(actual);
+    actual = layer2_8_bn2(actual);
+    actual = shortcut(actual, [32, 16, 16], old, [32, 16, 16]);
+    old = actual = relu(actual);
+    actual = layer3_0_conv1(actual);
+    actual = layer3_0_bn1(actual);
+    actual = relu(actual);
+    actual = layer3_0_conv2(actual);
+    actual = layer3_0_bn2(actual);
+    actual = shortcut(actual, [64, 8, 8], old, [32, 16, 16]);
+    old = actual = relu(actual);
+    actual = layer3_1_conv1(actual);
+    actual = layer3_1_bn1(actual);
+    actual = relu(actual);
+    actual = layer3_1_conv2(actual);
+    actual = layer3_1_bn2(actual);
+    actual = shortcut(actual, [64, 8, 8], old, [64, 8, 8]);
+    old = actual = relu(actual);
+    actual = layer3_2_conv1(actual);
+    actual = layer3_2_bn1(actual);
+    actual = relu(actual);
+    actual = layer3_2_conv2(actual);
+    actual = layer3_2_bn2(actual);
+    actual = shortcut(actual, [64, 8, 8], old, [64, 8, 8]);
+    old = actual = relu(actual);
+    actual = layer3_3_conv1(actual);
+    actual = layer3_3_bn1(actual);
+    actual = relu(actual);
+    actual = layer3_3_conv2(actual);
+    actual = layer3_3_bn2(actual);
+    actual = shortcut(actual, [64, 8, 8], old, [64, 8, 8]);
+    old = actual = relu(actual);
+    actual = layer3_4_conv1(actual);
+    actual = layer3_4_bn1(actual);
+    actual = relu(actual);
+    actual = layer3_4_conv2(actual);
+    actual = layer3_4_bn2(actual);
+    actual = shortcut(actual, [64, 8, 8], old, [64, 8, 8]);
+    old = actual = relu(actual);
+    actual = layer3_5_conv1(actual);
+    actual = layer3_5_bn1(actual);
+    actual = relu(actual);
+    actual = layer3_5_conv2(actual);
+    actual = layer3_5_bn2(actual);
+    actual = shortcut(actual, [64, 8, 8], old, [64, 8, 8]);
+    old = actual = relu(actual);
+    actual = layer3_6_conv1(actual);
+    actual = layer3_6_bn1(actual);
+    actual = relu(actual);
+    actual = layer3_6_conv2(actual);
+    actual = layer3_6_bn2(actual);
+    actual = shortcut(actual, [64, 8, 8], old, [64, 8, 8]);
+    old = actual = relu(actual);
+    actual = layer3_7_conv1(actual);
+    actual = layer3_7_bn1(actual);
+    actual = relu(actual);
+    actual = layer3_7_conv2(actual);
+    actual = layer3_7_bn2(actual);
+    actual = shortcut(actual, [64, 8, 8], old, [64, 8, 8]);
+    old = actual = relu(actual);
+    actual = layer3_8_conv1(actual);
+    actual = layer3_8_bn1(actual);
+    actual = relu(actual);
+    actual = layer3_8_conv2(actual);
+    actual = layer3_8_bn2(actual);
+    actual = shortcut(actual, [64, 8, 8], old, [64, 8, 8]);
+    old = actual = relu(actual);
+
+    actual = channelWiseMean(actual, 64, 8, 8)
+    actual = linear(actual)
+    actual = typedArrayToArray(actual, 10, 1, 1).flat()
+
+    assertEqual(expected.length, actual.length, "Length differs")
+
+    for (let i = 0; i < actual.length; i++) {
+        assertEqual(expected[i], actual[i])
+    }
+
+    // --------------------------------
+
+    console.log("All assertions passed")
+    document.write("<br/><br/>All assertions passed!");
+
+
+
+
+</script>

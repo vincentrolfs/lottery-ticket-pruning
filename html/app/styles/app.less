@@ -1,0 +1,105 @@
+@bg: #FFFFFF;
+@text: #2E2C24;
+@green: #50916A;
+@red: #be4156;
+@light-grey: #EEEEEE;
+
+@main-max-width: 800px;
+@item-width: 200px;
+
+@bold-weight: 900;
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  // See https://aykevl.nl/2014/09/fix-jumping-scrollbar
+  overflow-y: scroll;
+}
+
+body {
+  background: @bg;
+  font-family: 'Lato', sans-serif;
+  color: @text;
+  font-size: 1.1em;
+
+  padding: 32px 32px 0 32px;
+
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+
+  max-width: @main-max-width;
+}
+
+.area {
+  margin: 8px;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  &.controls {
+    flex-direction: column;
+
+    > * {
+      margin-bottom: 8px;
+    }
+  }
+
+  > div {
+    margin: 8px;
+    padding: 8px;
+    background: @light-grey;
+    width: @item-width;
+  }
+}
+
+img {
+  width: 128px;
+  height: 128px;
+}
+
+.correct {
+  color: @green;
+  font-weight: bold;
+}
+
+.wrong {
+  color: @red;
+  font-weight: bold;
+}
+
+h3 {
+  display: block;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  font-weight: @bold-weight;
+
+  span {
+    display: none;
+    font-size: 1em;
+  }
+
+  &.loading span {
+    display: inline;
+  }
+}
+
+.canvasWrapper {
+  margin-top: 16px;
+  padding-left: 16px;
+
+  canvas {
+    margin-bottom: 8px;
+  }
+}
