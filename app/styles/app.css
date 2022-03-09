@@ -1,0 +1,76 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  overflow-y: scroll;
+}
+body {
+  background: #FFFFFF;
+  font-family: 'Lato', sans-serif;
+  color: #2E2C24;
+  font-size: 1.1em;
+  padding: 32px 32px 0 32px;
+  display: flex;
+  justify-content: center;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+.area {
+  margin: 8px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.area.controls {
+  flex-direction: column;
+}
+.area.controls > * {
+  margin-bottom: 8px;
+}
+.area > div {
+  margin: 8px;
+  padding: 8px;
+  background: #EEEEEE;
+  width: 200px;
+}
+img {
+  width: 128px;
+  height: 128px;
+}
+.correct {
+  color: #50916A;
+  font-weight: bold;
+}
+.wrong {
+  color: #be4156;
+  font-weight: bold;
+}
+h3 {
+  display: block;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  font-weight: 900;
+}
+h3 span {
+  display: none;
+  font-size: 1em;
+}
+h3.loading span {
+  display: inline;
+}
+.canvasWrapper {
+  margin-top: 16px;
+  padding-left: 16px;
+}
+.canvasWrapper canvas {
+  margin-bottom: 8px;
+}
+/*# sourceMappingURL=app.css.map */
