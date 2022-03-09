@@ -141,7 +141,7 @@ function addEventListeners() {
             startButton.disabled = false;
             uploadElement.disabled = false;
         }
-        scriptTag.src = "../models_js/lt_traditional_" + seed + "_" + compression.padStart(2, "0") + ".000_round0" + (compression === "1" ? "0" : "1") + "_final.js";
+        scriptTag.src = "models_js/lt_traditional_" + seed + "_" + compression.padStart(2, "0") + ".000_round0" + (compression === "1" ? "0" : "1") + "_final.js";
         document.body.appendChild(scriptTag);
     })
     uploadElement.addEventListener("change", function () {
